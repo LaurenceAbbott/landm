@@ -471,7 +471,8 @@ h1,h2,h3,h4{
 
 /* ---------- Footer ---------- */
 .site-footer{ background:var(--black); color:var(--white); border-top:1px solid var(--line); }
-.footer-top{ padding-block:clamp(3rem,6vw,5.5rem); border-bottom:1px solid var(--line); }
+.footer-top{ padding-block:clamp(3rem,6vw,5.5rem); }
+.footer-shape{ display:block; width:100%; height:auto; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr .8fr .8fr 1fr; gap:2.5rem; }
 .footer-brand img{ height:34px; }
 .footer-brand p{ margin-top:1.2rem; color:var(--fg-muted); max-width:32ch; font-size:.92rem; }
@@ -603,14 +604,14 @@ h1,h2,h3,h4{
 .whatsapp-fab{
   position:fixed; right:1.25rem; bottom:1.25rem; z-index:150;
   width:58px; height:58px; border-radius:50%;
-  background:#25D366; color:var(--white);
+  background:#25D366;
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 6px 20px rgba(0,0,0,.35);
   transition:transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .whatsapp-fab:hover{ transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.4); }
-.whatsapp-fab svg{ width:30px; height:30px; }
+.whatsapp-fab img{ width:30px; height:30px; }
 @media (max-width:600px){
   .whatsapp-fab{ right:1rem; bottom:1rem; width:52px; height:52px; }
-  .whatsapp-fab svg{ width:27px; height:27px; }
+  .whatsapp-fab img{ width:27px; height:27px; }
 }
