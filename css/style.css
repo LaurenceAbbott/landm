@@ -241,9 +241,6 @@ h1,h2,h3,h4{
 .nav-mobile .nav-mobile-foot{
   margin-top:3rem; color:var(--fg-muted); font-size:.85rem;
 }
-.nav-mobile a.nav-mobile-cta{
-  font-size:clamp(1.4rem,6vw,1.9rem); font-weight:700; color:var(--fg-muted);
-}
 
 @media (max-width:860px){
   .nav-primary{ display:none; }
