@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | L&amp;M Highways — Surfacing Contractor</title>
+<meta name="description" content="Get a free, no-obligation quote from L&amp;M Highways. Based in Mildenhall, Suffolk, covering Bury St Edmunds and East Anglia.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand" aria-label="L&amp;M Highways — Home">
+      <img src="assets/logo-lockup-white.png" alt="L&amp;M Highways">
+    </a>
+    <nav class="nav-primary" aria-label="Primary">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="our-work.html">Our Work</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a class="tel" href="tel:+441638000000">01638 000 000</a>
+      <a class="btn" href="contact.html">Get a quote <span class="arrow">→</span></a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile" id="navToggle">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose">Close ✕</button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="our-work.html">Our Work</a></li>
+    <li><a href="faqs.html">FAQs</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-mobile-foot">
+    Mildenhall, Bury St Edmunds, Suffolk IP28<br>
+    <a href="tel:+441638000000" style="color:#fff">01638 000 000</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Contact</span>
+      <h1 class="h-display">Let's talk about<br>your project.</h1>
+      <p class="lede">Tell us a little about the job and we'll arrange a free, no-obligation site visit and quote.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+
+      <div>
+        <!-- NOTE FOR L&M: this form isn't wired to an inbox yet. Connect it to a form service
+             (e.g. Formspree/Netlify Forms) or your own backend before going live, and update
+             the phone/email placeholders throughout the site with your real details. -->
+        <form id="quoteForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="type">Project type</label>
+              <select id="type" name="type">
+                <option>Domestic driveway</option>
+                <option>Domestic patio / pathway</option>
+                <option>Commercial car park</option>
+                <option>Commercial access road / estate</option>
+                <option>Road surfacing / repairs</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="postcode">Site postcode</label>
+              <input type="text" id="postcode" name="postcode" autocomplete="postal-code">
+            </div>
+          </div>
+          <div class="field">
+            <label for="message">Tell us about the project</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn">Send enquiry <span class="arrow">→</span></button>
+          <p class="form-note" id="formStatus">We'll get back to you within one working day.</p>
+        </form>
+      </div>
+
+      <div>
+        <div class="info-block">
+          <h4>Call us</h4>
+          <p><a href="tel:+441638000000">01638 000 000</a></p>
+        </div>
+        <div class="info-block">
+          <h4>Email us</h4>
+          <p><a href="mailto:enquiries@lmhighways.co.uk">enquiries@lmhighways.co.uk</a></p>
+        </div>
+        <div class="info-block">
+          <h4>Based in</h4>
+          <p style="font-weight:600;">Mildenhall, Bury St Edmunds<br>Suffolk, IP28</p>
+        </div>
+        <div class="info-block">
+          <h4>Coverage</h4>
+          <p style="font-weight:600;">Suffolk, Cambridgeshire &amp; Norfolk — including Bury St Edmunds, Newmarket, Ely, Thetford and the surrounding areas.</p>
+        </div>
+        <div class="info-block">
+          <h4>Office hours</h4>
+          <p style="font-weight:600;">Monday–Friday, 8am–5pm</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/logo-lockup-white.png" alt="L&amp;M Highways">
+        <p>Professional surfacing contractor undertaking all aspects of asphalt paving. Commercial &amp; domestic. Precision, delivered on time, every time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sitemap</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="our-work.html">Our Work</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#commercial">Commercial Surfacing</a></li>
+          <li><a href="services.html#domestic">Domestic Driveways</a></li>
+          <li><a href="services.html#commercial">Road &amp; Highway Works</a></li>
+          <li><a href="services.html#domestic">Resin &amp; Repairs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="tel:+441638000000">01638 000 000</a></li>
+          <li><a href="mailto:enquiries@lmhighways.co.uk">enquiries@lmhighways.co.uk</a></li>
+          <li>Mildenhall, Bury St Edmunds<br>Suffolk, IP28</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year">2026</span> L&amp;M Highways. All rights reserved.</span>
+    <div class="legal-links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="faqs.html">FAQs</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
