@@ -251,6 +251,21 @@ h1,h2,h3,h4{
   font-size:clamp(2.4rem,10vw,4rem); letter-spacing:-0.02em;
   display:inline-block; padding-block:.15em;
 }
+/* the quote CTA is an action, not another nav entry — .nav-mobile a
+   would otherwise give it the same giant display treatment as the
+   links, which is what made it read as a duplicate Contact */
+.nav-mobile a.nav-mobile-cta{
+  align-self:flex-start; margin-top:2rem;
+  font-family:var(--font-body); font-size:var(--fs-control);
+  font-weight:700; letter-spacing:.04em; padding:1.05rem 1.7rem;
+  color:var(--black);
+}
+.nav-mobile a.nav-mobile-cta:hover{ color:var(--white); }
+/* the address block's phone link is body copy, not a menu item */
+.nav-mobile .nav-mobile-foot a{
+  font-family:var(--font-body); font-size:inherit;
+  font-weight:600; padding-block:0;
+}
 .nav-mobile .nav-mobile-foot{
   margin-top:3rem; color:var(--fg-muted); font-size:.85rem;
 }
