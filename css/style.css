@@ -378,12 +378,11 @@ h1,h2,h3,h4{
 .grid-2{ grid-template-columns:repeat(2,1fr); }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
 .grid-4{ grid-template-columns:repeat(4,1fr); }
-.grid-5{ grid-template-columns:repeat(5,1fr); }
 @media (max-width:860px){
-  .grid-3, .grid-4, .grid-5{ grid-template-columns:repeat(2,1fr); }
+  .grid-3, .grid-4{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:560px){
-  .grid-2, .grid-3, .grid-4, .grid-5{ grid-template-columns:1fr; }
+  .grid-2, .grid-3, .grid-4{ grid-template-columns:1fr; }
 }
 
 .card{
@@ -399,6 +398,63 @@ h1,h2,h3,h4{
 .card p{ color:var(--fg-muted); font-size:.95rem; }
 .section--paper .card p{ color:var(--fg-on-light-muted); }
 .section--paper .card .num{ color:#9b9a94; }
+
+/* Bare rule-separated list — an alternative to the boxed .grid, for
+   sections that would otherwise stack into another wall of cards. */
+.spec-list{
+  display:grid; grid-template-columns:repeat(2,1fr);
+  column-gap:clamp(2.5rem,6vw,6rem);
+  border-top:1px solid var(--line);
+}
+.spec-item{
+  display:grid; grid-template-columns:auto 1fr; gap:1.4rem;
+  padding-block:2.1rem; border-bottom:1px solid var(--line);
+  transition:padding-left .35s var(--ease);
+}
+.spec-item:hover{ padding-left:.6rem; }
+.spec-item .idx{
+  font-family:var(--font-display); font-weight:900;
+  font-size:2.1rem; line-height:.85; color:var(--fg-faint);
+}
+.spec-item h3{ font-size:1.15rem; margin-bottom:.5rem; }
+.spec-item p{ color:var(--fg-muted); font-size:.95rem; }
+.spec-list--single{ grid-template-columns:1fr; }
+.section--paper .spec-list,
+.section--paper .spec-item{ border-color:var(--line-on-light); }
+.section--paper .spec-item p{ color:var(--fg-on-light-muted); }
+.section--paper .spec-item .idx{ color:#9b9a94; }
+@media (max-width:760px){ .spec-list{ grid-template-columns:1fr; } }
+
+/* Bordered text panel — pairs with .spec-list for asymmetric splits
+   without needing photography. */
+.spec-panel{ border:1px solid var(--line); padding:clamp(1.6rem,3vw,2.4rem); }
+.spec-panel h4{
+  font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--fg-faint); margin-bottom:1.1rem;
+}
+.spec-panel li{
+  padding-block:.8rem; border-top:1px solid var(--line);
+  font-weight:600; font-size:.95rem;
+  display:flex; align-items:center; gap:.85rem;
+}
+.spec-panel li:first-of-type{ border-top:0; }
+.spec-panel li .lanes span{ height:4px; }
+.spec-panel li .lanes span:nth-child(1){ width:16px; }
+.spec-panel li .lanes span:nth-child(2){ width:12px; margin-left:4px; }
+.spec-panel li .lanes span:nth-child(3){ width:16px; }
+
+/* Line icons — the service grids lead with a mark instead of an index,
+   so they read differently from the numbered .spec-list sections. */
+.ico{
+  width:40px; height:40px; display:block;
+  fill:none; stroke:currentColor; stroke-width:1.5;
+  stroke-linecap:square; stroke-linejoin:miter;
+  color:var(--fg-muted);
+  transition:color .3s var(--ease), transform .3s var(--ease);
+}
+.card:hover .ico{ color:var(--white); transform:translateY(-2px); }
+.section--paper .ico{ color:var(--fg-on-light-muted); }
+.section--paper .card:hover .ico{ color:var(--black); }
 
 /* Section header row */
 .section-head{
