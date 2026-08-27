@@ -435,13 +435,8 @@ h1,h2,h3,h4{
 .spec-panel li{
   padding-block:.8rem; border-top:1px solid var(--line);
   font-weight:600; font-size:.95rem;
-  display:flex; align-items:center; gap:.85rem;
 }
 .spec-panel li:first-of-type{ border-top:0; }
-.spec-panel li .lanes span{ height:4px; }
-.spec-panel li .lanes span:nth-child(1){ width:16px; }
-.spec-panel li .lanes span:nth-child(2){ width:12px; margin-left:4px; }
-.spec-panel li .lanes span:nth-child(3){ width:16px; }
 
 
 /* Section header row */
