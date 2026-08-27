@@ -7,7 +7,7 @@
 <meta name="description" content="Get a free, no-obligation quote from L&amp;M Highways. Based in Mildenhall, Suffolk, covering Bury St Edmunds and East Anglia.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css?v=3">
+<link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -71,21 +71,20 @@
         <form id="quoteForm" novalidate>
           <div class="field-row">
             <div class="field">
+              <input placeholder=" " type="text" id="name" name="name" required autocomplete="name">
               <label for="name">Full name</label>
-              <input type="text" id="name" name="name" required autocomplete="name">
             </div>
             <div class="field">
+              <input placeholder=" " type="tel" id="phone" name="phone" required autocomplete="tel">
               <label for="phone">Phone number</label>
-              <input type="tel" id="phone" name="phone" required autocomplete="tel">
             </div>
           </div>
           <div class="field">
+            <input placeholder=" " type="email" id="email" name="email" required autocomplete="email">
             <label for="email">Email address</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
           </div>
           <div class="field-row">
-            <div class="field">
-              <label for="type">Project type</label>
+            <div class="field field--fixed">
               <select id="type" name="type">
                 <option>Domestic driveway</option>
                 <option>Domestic patio / pathway</option>
@@ -94,15 +93,16 @@
                 <option>Road surfacing / repairs</option>
                 <option>Something else</option>
               </select>
+              <label for="type">Project type</label>
             </div>
             <div class="field">
+              <input placeholder=" " type="text" id="postcode" name="postcode" autocomplete="postal-code">
               <label for="postcode">Site postcode</label>
-              <input type="text" id="postcode" name="postcode" autocomplete="postal-code">
             </div>
           </div>
           <div class="field">
+            <textarea id="message" name="message" rows="5" placeholder=" "></textarea>
             <label for="message">Tell us about the project</label>
-            <textarea id="message" name="message" rows="5"></textarea>
           </div>
           <button type="submit" class="btn">Send enquiry <span class="arrow">→</span></button>
           <p class="form-note" id="formStatus">We'll get back to you within one working day.</p>
