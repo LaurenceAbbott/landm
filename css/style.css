@@ -443,18 +443,6 @@ h1,h2,h3,h4{
 .spec-panel li .lanes span:nth-child(2){ width:12px; margin-left:4px; }
 .spec-panel li .lanes span:nth-child(3){ width:16px; }
 
-/* Line icons — the service grids lead with a mark instead of an index,
-   so they read differently from the numbered .spec-list sections. */
-.ico{
-  width:40px; height:40px; display:block;
-  fill:none; stroke:currentColor; stroke-width:1.5;
-  stroke-linecap:square; stroke-linejoin:miter;
-  color:var(--fg-muted);
-  transition:color .3s var(--ease), transform .3s var(--ease);
-}
-.card:hover .ico{ color:var(--white); transform:translateY(-2px); }
-.section--paper .ico{ color:var(--fg-on-light-muted); }
-.section--paper .card:hover .ico{ color:var(--black); }
 
 /* Section header row */
 .section-head{
