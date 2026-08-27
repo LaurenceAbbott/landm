@@ -584,17 +584,54 @@ h1,h2,h3,h4{
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,5vw,5rem); }
 @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
 
-.field{ margin-bottom:1.3rem; }
-.field label{ display:block; font-size:var(--fs-label); font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:.55rem; color:var(--fg-muted); }
+/* Filled fields with a floating label. The label starts inside the
+   field and rises once it has focus or content, so a field always
+   shows what it is without a separate label line above it.
+   appearance:none is load-bearing — without it iOS Safari draws its own
+   rounded border and inner shadow under ours (the "halo"), and renders
+   selects as a pill. */
+.field{ position:relative; margin-bottom:1rem; }
 .field input, .field select, .field textarea{
-  width:100%; border:0; border-bottom:1px solid var(--line-strong); background:transparent;
-  padding:.75rem .1rem; color:var(--fg); outline:none;
-  transition:border-color .2s var(--ease), background .2s var(--ease);
+  -webkit-appearance:none; appearance:none; border-radius:0;
+  width:100%; border:0; border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.05);
+  padding:1.55rem .85rem .5rem;
+  color:var(--fg); font-family:inherit; font-size:1rem; line-height:1.35;
+  outline:none;
+  transition:background .2s var(--ease), box-shadow .2s var(--ease);
+}
+.field textarea{ resize:vertical; min-height:8rem; padding-top:1.7rem; }
+.field select{
+  padding-right:2.5rem; cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B7B6B1' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right .95rem center; background-size:11px;
 }
 .field select option{ background:var(--bg); color:var(--fg); }
-.field textarea{ resize:vertical; min-height:110px; }
-.field input:focus, .field select:focus, .field textarea:focus{ border-color:var(--white); background:var(--bg-alt); }
-.field-row{ display:grid; grid-template-columns:1fr 1fr; gap:1.3rem; }
+
+.field label{
+  position:absolute; left:.85rem; top:1rem;
+  font-size:1rem; line-height:1.35; color:var(--fg-faint);
+  pointer-events:none; transform-origin:left top;
+  transition:transform .18s var(--ease), color .18s var(--ease);
+}
+/* raised: focused, filled, or a control that always shows a value */
+.field input:focus ~ label,
+.field input:not(:placeholder-shown) ~ label,
+.field textarea:focus ~ label,
+.field textarea:not(:placeholder-shown) ~ label,
+.field--fixed label{ transform:translateY(-.68rem) scale(.75); }
+
+/* the underline thickens via inset shadow so nothing shifts on focus */
+.field input:focus, .field select:focus, .field textarea:focus{
+  background:rgba(255,255,255,.09);
+  box-shadow:inset 0 -2px 0 var(--white);
+}
+.field input:focus ~ label,
+.field select:focus ~ label,
+.field textarea:focus ~ label{ color:var(--white); }
+.field-hint{ display:block; margin-top:.4rem; font-size:var(--fs-label); color:var(--fg-faint); }
+
+.field-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
 @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
 .form-note{ font-size:.8rem; color:var(--fg-faint); margin-top:1rem; }
 
