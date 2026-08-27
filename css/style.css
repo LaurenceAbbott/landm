@@ -37,6 +37,11 @@
   --fs-label:.75rem;    /* uppercase micro-labels and form labels */
   --fs-control:.8rem;   /* buttons, nav links, tabs */
 
+  /* One height for every form control. Date and select inputs size from
+     their own shadow content, which differs per browser, so the shared
+     height is pinned rather than left to the intrinsic content box. */
+  --field-h:3.5rem;
+
   --container:1400px;
   --gutter:clamp(1.25rem, 4vw, 3.5rem);
   --section-y:clamp(4.5rem, 9vw, 9.5rem);
@@ -590,17 +595,22 @@ h1,h2,h3,h4{
    appearance:none is load-bearing — without it iOS Safari draws its own
    rounded border and inner shadow under ours (the "halo"), and renders
    selects as a pill. */
-.field{ position:relative; margin-bottom:1rem; }
+.field{ position:relative; margin-bottom:.5rem; }
 .field input, .field select, .field textarea{
   -webkit-appearance:none; appearance:none; border-radius:0;
   width:100%; border:0; border-bottom:1px solid var(--line);
   background:rgba(255,255,255,.05);
   padding:1.55rem .85rem .5rem;
   color:var(--fg); font-family:inherit; font-size:1rem; line-height:1.35;
+  min-height:var(--field-h);
   outline:none;
   transition:background .2s var(--ease), box-shadow .2s var(--ease);
 }
 .field textarea{ resize:vertical; min-height:8rem; padding-top:1.7rem; }
+/* keep the date value on the same baseline as a plain text input */
+.field input[type="date"]{ height:var(--field-h); }
+.field input[type="date"]::-webkit-date-and-time-value{ text-align:left; margin:0; }
+.field input[type="date"]::-webkit-calendar-picker-indicator{ filter:invert(1); opacity:.55; cursor:pointer; }
 .field select{
   padding-right:2.5rem; cursor:pointer;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B7B6B1' stroke-width='1.5'/%3E%3C/svg%3E");
@@ -629,9 +639,15 @@ h1,h2,h3,h4{
 .field input:focus ~ label,
 .field select:focus ~ label,
 .field textarea:focus ~ label{ color:var(--white); }
-.field-hint{ display:block; margin-top:.4rem; font-size:var(--fs-label); color:var(--fg-faint); }
+.field-hint{ display:block; margin-top:.25rem; font-size:var(--fs-label); color:var(--fg-faint); }
 
-.field-row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+/* the row's own gap must not stack on the fields' margin when it
+   collapses to one column, or paired fields sit twice as far apart */
+.field-row{
+  display:grid; grid-template-columns:1fr 1fr;
+  column-gap:1rem; row-gap:.5rem; margin-bottom:.5rem;
+}
+.field-row .field{ margin-bottom:0; }
 @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
 .form-note{ font-size:.8rem; color:var(--fg-faint); margin-top:1rem; }
 
