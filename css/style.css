@@ -629,64 +629,45 @@ h1,h2,h3,h4{
 .prose .updated{ color:var(--fg-muted); font-size:.85rem; margin-bottom:2.5rem; display:block; }
 .prose a{ color:var(--fg); text-decoration:underline; }
 
-/* ---------- FAQ accordion ---------- */
-.faq-list{ border-top:1px solid var(--line); }
-.faq-item{ border-bottom:1px solid var(--line); }
-.faq-item summary{
-  list-style:none; cursor:pointer;
-  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
-  padding-block:1.7rem;
-  font-family:var(--font-display); font-weight:800; font-size:clamp(1.05rem,1.6vw,1.35rem);
-  transition:color .25s var(--ease);
-}
-.faq-item summary:hover{ color:var(--fg-muted); }
-.faq-item summary::-webkit-details-marker{ display:none; }
-.faq-item .icon{ flex:none; position:relative; width:20px; height:20px; }
-.faq-item .icon::before, .faq-item .icon::after{
-  content:""; position:absolute; background:var(--white); top:50%; left:50%; transform:translate(-50%,-50%);
-}
-.faq-item .icon::before{ width:16px; height:2px; }
-.faq-item .icon::after{ width:2px; height:16px; transition:transform .25s var(--ease); }
-.faq-item[open] .icon::after{ transform:translate(-50%,-50%) rotate(90deg) scale(0); }
-.faq-item .faq-a{ padding-bottom:1.9rem; color:var(--fg-muted); max-width:66ch; }
-
-/* ---------- Sectors ---------- */
-/* Rule-separated rows that open in place. Distinct from the FAQ
-   accordion: the name stays on the left and the description reveals in
-   the right half, on the same 50% axis the section headers use. */
-.sector-list{ border-top:1px solid var(--line); }
-.sector{ border-bottom:1px solid var(--line); }
-.sector summary{
+/* ---------- Accordion ---------- */
+/* One expand/collapse pattern for the whole site — used by Sectors and
+   FAQs. Rule-separated rows that open in place: the label stays on the
+   left and the body reveals in the right half, on the same 50% axis the
+   section headers use. Native <details>, so it works without JS and
+   stays keyboard accessible. */
+.accordion{ border-top:1px solid var(--line); }
+.accordion-item{ border-bottom:1px solid var(--line); }
+.accordion-item summary{
   list-style:none; cursor:pointer;
   display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
   padding-block:1.4rem;
   transition:padding-left .35s var(--ease);
 }
-.sector summary::-webkit-details-marker{ display:none; }
-.sector summary:hover{ padding-left:.6rem; }
-.sector-name{
+.accordion-item summary::-webkit-details-marker{ display:none; }
+.accordion-item summary:hover{ padding-left:.6rem; }
+.accordion-label{
   font-family:var(--font-display); font-weight:800;
   font-size:var(--fs-sub); letter-spacing:-0.01em;
 }
-.sector-icon{ flex:none; position:relative; width:18px; height:18px; }
-.sector-icon::before, .sector-icon::after{
+.accordion-icon{ flex:none; position:relative; width:18px; height:18px; }
+.accordion-icon::before, .accordion-icon::after{
   content:""; position:absolute; background:var(--fg-muted);
   top:50%; left:50%; transform:translate(-50%,-50%);
   transition:background .25s var(--ease), transform .25s var(--ease);
 }
-.sector-icon::before{ width:14px; height:2px; }
-.sector-icon::after{ width:2px; height:14px; }
-.sector[open] .sector-icon::after{ transform:translate(-50%,-50%) rotate(90deg) scale(0); }
-.sector[open] .sector-icon::before,
-.sector summary:hover .sector-icon::before,
-.sector summary:hover .sector-icon::after{ background:var(--white); }
-.sector-body{
+.accordion-icon::before{ width:14px; height:2px; }
+.accordion-icon::after{ width:2px; height:14px; }
+.accordion-item[open] .accordion-icon::after{ transform:translate(-50%,-50%) rotate(90deg) scale(0); }
+.accordion-item[open] .accordion-icon::before,
+.accordion-item summary:hover .accordion-icon::before,
+.accordion-item summary:hover .accordion-icon::after{ background:var(--white); }
+.accordion-body{
   padding-bottom:1.6rem;
   color:var(--fg-muted); font-size:var(--fs-body-sm); max-width:60ch;
 }
 @media (min-width:861px){
   /* description opens in the right half, on the shared axis */
-  .sector-body{ margin-left:50%; margin-top:-.4rem; }
+  .accordion-body{ margin-left:50%; margin-top:-.4rem; }
 }
 
 /* ---------- Contact ---------- */
