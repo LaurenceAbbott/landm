@@ -15,9 +15,11 @@
   --bg-raise:#1B1B1D;       /* raised dark surface (cards on dark) */
   --bg-light:#F2F1EE;       /* the occasional light "paper" punch-section */
 
+  /* Two text tones per surface. Every text colour below clears WCAG AA
+     at the size it is used; a third, fainter grey previously sat at
+     4.59:1, a hair over the 4.5 threshold. */
   --fg:#FFFFFF;
   --fg-muted:#B7B6B1;
-  --fg-faint:#807F7A;
 
   --fg-on-light:#0B0B0C;
   --fg-on-light-muted:#4E4E4E;
@@ -72,7 +74,7 @@ body::before{
   mix-blend-mode:overlay;
 }
 @media (prefers-reduced-motion:no-preference){
-  body{ scrollbar-color: var(--fg-faint) transparent; }
+  body{ scrollbar-color: var(--fg-muted) transparent; }
 }
 img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
@@ -286,7 +288,7 @@ h1,h2,h3,h4{
 .nav-mobile .nav-mobile-foot a.nav-foot-item:hover{ color:var(--fg-muted); }
 .nav-foot-lbl{
   font-size:var(--fs-label); letter-spacing:.14em; text-transform:uppercase;
-  font-weight:700; color:var(--fg-faint);
+  font-weight:700; color:var(--fg-muted);
 }
 .nav-foot-addr{
   font-style:normal; color:var(--fg-muted); line-height:1.5;
@@ -380,7 +382,7 @@ h1,h2,h3,h4{
 .scroll-cue{
   position:absolute; left:var(--gutter); bottom:1.6rem; z-index:4;
   display:flex; align-items:center; gap:.7rem;
-  font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--fg-faint);
+  font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; color:var(--fg-muted);
 }
 .scroll-cue .dot{
   width:6px; height:6px; border-radius:50%; background:currentColor;
@@ -448,12 +450,12 @@ h1,h2,h3,h4{
 .card:hover{ background:var(--bg-raise); }
 .section--paper .card:hover{ background:#fff; }
 .card .num{
-  font-family:var(--font-display); font-weight:900; font-size:1.1rem; color:var(--fg-faint);
+  font-family:var(--font-display); font-weight:900; font-size:1.1rem; color:var(--fg-muted);
 }
 .card h3{ font-size:var(--fs-sub); font-weight:800; }
 .card p{ color:var(--fg-muted); font-size:var(--fs-body-sm); }
 .section--paper .card p{ color:var(--fg-on-light-muted); }
-.section--paper .card .num{ color:#9b9a94; }
+.section--paper .card .num{ color:var(--fg-on-light-muted); }
 
 /* Bare rule-separated list — an alternative to the boxed .grid, for
    sections that would otherwise stack into another wall of cards. */
@@ -480,7 +482,7 @@ h1,h2,h3,h4{
 .spec-panel{ border:1px solid var(--line); padding:clamp(1.6rem,3vw,2.4rem); }
 .spec-panel h4{
   font-size:var(--fs-label); letter-spacing:.14em; text-transform:uppercase;
-  color:var(--fg-faint); margin-bottom:1.1rem;
+  color:var(--fg-muted); margin-bottom:1.1rem;
 }
 .spec-panel li{
   padding-block:.8rem; border-top:1px solid var(--line);
@@ -543,7 +545,7 @@ h1,h2,h3,h4{
 }
 .step:hover{ padding-left:.6rem; }
 .steps .step:last-child{ border-bottom:1px solid var(--line); }
-.step .step-num{ font-family:var(--font-display); font-weight:900; font-size:1.4rem; color:var(--fg-faint); }
+.step .step-num{ font-family:var(--font-display); font-weight:900; font-size:1.4rem; color:var(--fg-muted); }
 .step h3{ font-size:var(--fs-sub); margin-bottom:.5rem; }
 .step p{ color:var(--fg-muted); max-width:56ch; font-size:var(--fs-body-sm); }
 
@@ -594,7 +596,7 @@ h1,h2,h3,h4{
 .section--paper.page-hero{ border-color:var(--line-on-light); }
 
 /* Breadcrumb-ish label */
-.crumb{ font-size:var(--fs-label); color:var(--fg-faint); letter-spacing:.04em; }
+.crumb{ font-size:var(--fs-label); color:var(--fg-muted); letter-spacing:.04em; }
 
 /* ---------- Content prose (legal pages) ---------- */
 .prose{ max-width:74ch; }
@@ -605,7 +607,7 @@ h1,h2,h3,h4{
 .prose li{ color:var(--fg-muted); padding-left:1.3rem; position:relative; margin-bottom:.5rem; }
 .prose li::before{ content:""; position:absolute; left:0; top:.55em; width:7px; height:7px; background:var(--white); }
 .prose strong{ color:var(--fg); }
-.prose .updated{ color:var(--fg-faint); font-size:.85rem; margin-bottom:2.5rem; display:block; }
+.prose .updated{ color:var(--fg-muted); font-size:.85rem; margin-bottom:2.5rem; display:block; }
 .prose a{ color:var(--fg); text-decoration:underline; }
 
 /* ---------- FAQ accordion ---------- */
@@ -664,7 +666,7 @@ h1,h2,h3,h4{
 
 .field label{
   position:absolute; left:.85rem; top:1rem;
-  font-size:1rem; line-height:1.35; color:var(--fg-faint);
+  font-size:1rem; line-height:1.35; color:var(--fg-muted);
   pointer-events:none; transform-origin:left top;
   transition:transform .18s var(--ease), color .18s var(--ease);
 }
@@ -683,7 +685,7 @@ h1,h2,h3,h4{
 .field input:focus ~ label,
 .field select:focus ~ label,
 .field textarea:focus ~ label{ color:var(--white); }
-.field-hint{ display:block; margin-top:.25rem; font-size:var(--fs-label); color:var(--fg-faint); }
+.field-hint{ display:block; margin-top:.25rem; font-size:var(--fs-label); color:var(--fg-muted); }
 
 /* the row's own gap must not stack on the fields' margin when it
    collapses to one column, or paired fields sit twice as far apart */
@@ -693,11 +695,11 @@ h1,h2,h3,h4{
 }
 .field-row .field{ margin-bottom:0; }
 @media (max-width:520px){ .field-row{ grid-template-columns:1fr; } }
-.form-note{ font-size:.8rem; color:var(--fg-faint); margin-top:1rem; }
+.form-note{ font-size:.8rem; color:var(--fg-muted); margin-top:1rem; }
 
 .info-block{ padding-block:1.6rem; border-top:1px solid var(--line); }
 .info-block:first-of-type{ border-top:0; }
-.info-block h4{ font-size:var(--fs-label); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-faint); margin-bottom:.5rem; }
+.info-block h4{ font-size:var(--fs-label); letter-spacing:.1em; text-transform:uppercase; color:var(--fg-muted); margin-bottom:.5rem; }
 .info-block p, .info-block a{ font-size:1.05rem; font-weight:600; }
 
 /* ---------- Filter tabs (Our Work) ---------- */
@@ -720,7 +722,7 @@ h1,h2,h3,h4{
 .work-body{ padding:1.5rem; }
 .work-body h3{ font-size:var(--fs-sub); margin-bottom:.35rem; }
 .work-body p{ color:var(--fg-muted); font-size:var(--fs-body-sm); }
-.work-body .loc{ display:block; margin-top:.7rem; font-size:var(--fs-label); letter-spacing:.04em; text-transform:uppercase; color:var(--fg-faint); }
+.work-body .loc{ display:block; margin-top:.7rem; font-size:var(--fs-label); letter-spacing:.04em; text-transform:uppercase; color:var(--fg-muted); }
 
 /* Grid children default to min-width:auto, which lets unbreakable
    content (a nowrap button, a long word) push a track wider than its
