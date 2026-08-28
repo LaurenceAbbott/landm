@@ -491,14 +491,30 @@ h1,h2,h3,h4{
 .spec-panel li:first-of-type{ border-top:0; }
 
 
-/* Section header row */
+/* Section header row. A two-column grid rather than space-between, so
+   the supporting text starts at the same place in every section. Under
+   flex its left edge was set by its own max-width and floated to
+   whatever was left over, landing on no column boundary below it. */
 .section-head{
-  display:flex; justify-content:space-between; align-items:flex-end; gap:2rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  /* same gap as .spec-list, so the text lands exactly on that
+     grid's second column where a section has one */
+  gap:1.5rem clamp(2.5rem,6vw,6rem);
+  align-items:end;
   margin-bottom:clamp(2.5rem,5vw,4rem);
-  flex-wrap:wrap;
 }
-.section-head h2{ margin-top:.9rem; }
-.section-head .lede{ margin:0; }
+.section-head > *{ min-width:0; }
+/* the heading now shares the row with the text column, so it ramps
+   more gently than a full-width .h-xl and stops breaking mid-word */
+.section-head h2{ margin-top:.9rem; font-size:clamp(2.1rem,3.9vw,4.6rem); }
+/* fill the column instead of stopping at 42ch and leaving a gap */
+.section-head .lede{ margin:0; max-width:none; }
+.section-head > .btn{ justify-self:end; }
+@media (max-width:860px){
+  .section-head{ grid-template-columns:1fr; }
+  .section-head > .btn{ justify-self:start; }
+}
 
 /* Stat row */
 .stat-row{
