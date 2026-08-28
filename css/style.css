@@ -650,6 +650,45 @@ h1,h2,h3,h4{
 .faq-item[open] .icon::after{ transform:translate(-50%,-50%) rotate(90deg) scale(0); }
 .faq-item .faq-a{ padding-bottom:1.9rem; color:var(--fg-muted); max-width:66ch; }
 
+/* ---------- Sectors ---------- */
+/* Rule-separated rows that open in place. Distinct from the FAQ
+   accordion: the name stays on the left and the description reveals in
+   the right half, on the same 50% axis the section headers use. */
+.sector-list{ border-top:1px solid var(--line); }
+.sector{ border-bottom:1px solid var(--line); }
+.sector summary{
+  list-style:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+  padding-block:1.4rem;
+  transition:padding-left .35s var(--ease);
+}
+.sector summary::-webkit-details-marker{ display:none; }
+.sector summary:hover{ padding-left:.6rem; }
+.sector-name{
+  font-family:var(--font-display); font-weight:800;
+  font-size:var(--fs-sub); letter-spacing:-0.01em;
+}
+.sector-icon{ flex:none; position:relative; width:18px; height:18px; }
+.sector-icon::before, .sector-icon::after{
+  content:""; position:absolute; background:var(--fg-muted);
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  transition:background .25s var(--ease), transform .25s var(--ease);
+}
+.sector-icon::before{ width:14px; height:2px; }
+.sector-icon::after{ width:2px; height:14px; }
+.sector[open] .sector-icon::after{ transform:translate(-50%,-50%) rotate(90deg) scale(0); }
+.sector[open] .sector-icon::before,
+.sector summary:hover .sector-icon::before,
+.sector summary:hover .sector-icon::after{ background:var(--white); }
+.sector-body{
+  padding-bottom:1.6rem;
+  color:var(--fg-muted); font-size:var(--fs-body-sm); max-width:60ch;
+}
+@media (min-width:861px){
+  /* description opens in the right half, on the shared axis */
+  .sector-body{ margin-left:50%; margin-top:-.4rem; }
+}
+
 /* ---------- Contact ---------- */
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.5rem,5vw,5rem); }
 @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
