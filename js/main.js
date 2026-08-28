@@ -33,7 +33,7 @@
   // without hand-adding a class to every element in every file.
   var autoRevealSelectors = [
     ".card", ".stat", ".step", ".work-card", ".info-block",
-    ".faq-item", ".hero-panel", ".section-head"
+    ".accordion-item", ".hero-panel", ".section-head"
   ];
   document.querySelectorAll(autoRevealSelectors.join(",")).forEach(function (el, i) {
     if (!el.classList.contains("reveal")) {
