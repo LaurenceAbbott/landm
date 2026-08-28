@@ -461,11 +461,12 @@ h1,h2,h3,h4{
    sections that would otherwise stack into another wall of cards. */
 .spec-list{
   display:grid; grid-template-columns:repeat(2,1fr);
-  column-gap:clamp(2.5rem,6vw,6rem);
+  column-gap:0;
   border-top:1px solid var(--line);
 }
 .spec-item{
-  padding-block:2.1rem; border-bottom:1px solid var(--line);
+  padding-block:2.1rem; padding-right:clamp(2rem,5vw,5rem);
+  border-bottom:1px solid var(--line);
   transition:padding-left .35s var(--ease);
 }
 .spec-item:hover{ padding-left:.6rem; }
@@ -475,7 +476,7 @@ h1,h2,h3,h4{
 .section--paper .spec-list,
 .section--paper .spec-item{ border-color:var(--line-on-light); }
 .section--paper .spec-item p{ color:var(--fg-on-light-muted); }
-@media (max-width:760px){ .spec-list{ grid-template-columns:1fr; } }
+@media (max-width:760px){ .spec-list{ grid-template-columns:1fr; } .spec-item{ padding-right:0; } }
 
 /* Bordered text panel — pairs with .spec-list for asymmetric splits
    without needing photography. */
@@ -498,13 +499,15 @@ h1,h2,h3,h4{
 .section-head{
   display:grid;
   grid-template-columns:1fr 1fr;
-  /* same gap as .spec-list, so the text lands exactly on that
-     grid's second column where a section has one */
-  gap:1.5rem clamp(2.5rem,6vw,6rem);
+  /* no column gap: a gap would push column two past the 50% line that
+     the stat row and .spec-list divide on. The breathing room lives in
+     the heading's padding instead, so the text starts exactly at 50%. */
+  gap:1.5rem 0;
   align-items:end;
   margin-bottom:clamp(2.5rem,5vw,4rem);
 }
 .section-head > *{ min-width:0; }
+.section-head > :first-child{ padding-right:clamp(2rem,5vw,5rem); }
 /* the heading now shares the row with the text column, so it ramps
    more gently than a full-width .h-xl and stops breaking mid-word */
 .section-head h2{ margin-top:.9rem; font-size:clamp(2.1rem,3.9vw,4.6rem); }
