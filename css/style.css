@@ -532,6 +532,9 @@ h1,h2,h3,h4{
 .stat:first-child{ border-left:0; }
 .stat .num{ font-family:var(--font-display); font-weight:900; font-size:clamp(2rem,4vw,3.2rem); }
 .stat .label{ margin-top:.4rem; font-size:var(--fs-label); letter-spacing:.04em; text-transform:uppercase; color:var(--fg-muted); }
+/* a unit belongs with its figure, and stays lowercase — an uppercased
+   label would render m² as M² */
+.stat .num-unit{ font-size:.4em; font-weight:800; margin-left:.25em; }
 .section--paper .stat-row{ border-color:var(--line-on-light); }
 .section--paper .stat{ border-color:var(--line-on-light); }
 .section--paper .stat:hover{ background:#fff; }
@@ -768,6 +771,55 @@ h1,h2,h3,h4{
 .work-body h3{ font-size:var(--fs-sub); margin-bottom:.35rem; }
 .work-body p{ color:var(--fg-muted); font-size:var(--fs-body-sm); }
 .work-body .loc{ display:block; margin-top:.7rem; font-size:var(--fs-label); letter-spacing:.04em; text-transform:uppercase; color:var(--fg-muted); }
+.work-card .work-body{ display:flex; flex-direction:column; flex:1; }
+/* the whole card is the link, so the affordance sits at the foot of the body
+   whatever length the summary runs to */
+.work-more{
+  display:block; margin-top:auto; padding-top:1.2rem;
+  font-size:var(--fs-label); letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+}
+.work-card:hover .work-more .arrow{ transform:translateX(4px); }
+.work-more .arrow{ display:inline-block; transition:transform .3s var(--ease); }
+
+/* Shown in place of the grid when a filter matches nothing. Turns an empty
+   result into the next step rather than a dead end. */
+.work-empty{ display:none; border:1px solid var(--line); padding:clamp(1.8rem,4vw,3rem); }
+.work-empty.is-shown{ display:block; }
+.work-empty h3{ font-size:clamp(1.5rem,2.8vw,2.2rem); }
+.work-empty p{ margin-top:1rem; color:var(--fg-muted); font-size:var(--fs-body-sm); max-width:60ch; }
+.work-empty .hero-cta{ margin-top:2rem; }
+
+/* ---------- Case study pages ---------- */
+/* Scope rows sit on the same 50% axis as .section-head and .spec-list */
+.case-spec{ border-top:1px solid var(--line); }
+.case-spec-item{
+  display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 0;
+  padding-block:1.6rem; border-bottom:1px solid var(--line);
+}
+.case-spec-item > *{ min-width:0; }
+.case-spec-item > :first-child{ padding-right:clamp(2rem,5vw,5rem); }
+.case-spec-op{ font-family:var(--font-display); font-weight:800; font-size:var(--fs-sub); }
+.case-spec-area{
+  margin-top:.35rem; font-size:var(--fs-label); letter-spacing:.04em;
+  color:var(--fg-muted);
+}
+.case-spec-detail{ margin:0; color:var(--fg-muted); font-size:var(--fs-body-sm); max-width:60ch; }
+@media (max-width:860px){
+  .case-spec-item{ grid-template-columns:1fr; gap:.8rem; }
+  .case-spec-item > :first-child{ padding-right:0; }
+}
+
+.case-gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+.case-gallery img{
+  display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+  background:var(--bg); filter:grayscale(0.65) contrast(1.05);
+}
+.case-gallery--wide{ grid-template-columns:repeat(2,1fr); }
+@media (max-width:860px){ .case-gallery{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .case-gallery, .case-gallery--wide{ grid-template-columns:1fr; } }
+
+/* the eyebrow carries a back-link on case study pages */
+.eyebrow a{ text-decoration:underline; text-underline-offset:3px; }
 
 /* Grid children default to min-width:auto, which lets unbreakable
    content (a nowrap button, a long word) push a track wider than its

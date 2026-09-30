@@ -33,7 +33,7 @@
   // without hand-adding a class to every element in every file.
   var autoRevealSelectors = [
     ".card", ".stat", ".step", ".work-card", ".info-block",
-    ".accordion-item", ".hero-panel", ".section-head"
+    ".accordion-item", ".hero-panel", ".section-head", ".case-spec-item"
   ];
   document.querySelectorAll(autoRevealSelectors.join(",")).forEach(function (el, i) {
     if (!el.classList.contains("reveal")) {
@@ -75,15 +75,32 @@
   var filterButtons = document.querySelectorAll(".filter-btn");
   var workCards = document.querySelectorAll("[data-category]");
   if (filterButtons.length && workCards.length) {
+    var workGrid = document.getElementById("workGrid");
+    var emptyStates = document.querySelectorAll("[data-empty-for]");
+
+    var applyFilter = function (cat) {
+      var visible = 0;
+      workCards.forEach(function (card) {
+        var show = cat === "all" || card.getAttribute("data-category") === cat;
+        card.style.display = show ? "" : "none";
+        if (show) { visible++; }
+      });
+      // the grid draws its own border and 1px gaps, so an empty one would
+      // leave a stray line behind — hide the container, not just the cards
+      if (workGrid) { workGrid.style.display = visible ? "" : "none"; }
+      // an empty state only shows for the filter it was written for, so
+      // adding a card in that category retires it automatically
+      emptyStates.forEach(function (el) {
+        var match = visible === 0 && el.getAttribute("data-empty-for") === cat;
+        el.classList.toggle("is-shown", match);
+      });
+    };
+
     filterButtons.forEach(function (btn) {
       btn.addEventListener("click", function () {
         filterButtons.forEach(function (b) { b.classList.remove("is-active"); });
         btn.classList.add("is-active");
-        var cat = btn.getAttribute("data-filter");
-        workCards.forEach(function (card) {
-          var show = cat === "all" || card.getAttribute("data-category") === cat;
-          card.style.display = show ? "" : "none";
-        });
+        applyFilter(btn.getAttribute("data-filter"));
       });
     });
   }
