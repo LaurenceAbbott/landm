@@ -76,7 +76,12 @@ body::before{
 @media (prefers-reduced-motion:no-preference){
   body{ scrollbar-color: var(--fg-muted) transparent; }
 }
-img{ max-width:100%; display:block; }
+/* width/height attributes are set on every img to reserve layout space and
+   stop CLS, but they also act as presentational hints. Without width:auto
+   an attribute would fight CSS that sets only the other dimension, and
+   max-width would then squash the image out of ratio. Explicit author
+   rules still win on specificity. */
+img{ max-width:100%; width:auto; height:auto; display:block; }
 a{ color:inherit; text-decoration:none; }
 ul{ margin:0; padding:0; list-style:none; }
 h1,h2,h3,h4,p,figure{ margin:0; }
@@ -609,7 +614,7 @@ h1,h2,h3,h4{
 .footer-top{ padding-block:clamp(3rem,6vw,5.5rem); }
 .footer-shape{ display:block; width:100%; height:auto; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr .8fr .8fr 1fr; gap:2.5rem; }
-.footer-brand img{ height:34px; }
+.footer-brand img{ height:34px; width:auto; }
 .footer-brand p{ margin-top:1.2rem; color:var(--fg-muted); max-width:32ch; font-size:var(--fs-body-sm); }
 .footer-col h2{ font-family:var(--font-body); font-size:var(--fs-label); letter-spacing:.12em; text-transform:uppercase; font-weight:700; color:var(--fg-muted); margin-bottom:1.1rem; }
 .footer-col ul{ display:flex; flex-direction:column; gap:.65rem; }
