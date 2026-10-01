@@ -369,6 +369,22 @@ h1,h2,h3,h4{
   border:1px solid var(--line);
 }
 .hero-panel img{ position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; filter:grayscale(0.65) contrast(1.05); }
+/* The labels sit straight on the photograph, and a surfacing photo can be
+   light anywhere in frame — pale tarmac, a bright sky. Two gradient scrims
+   give them a dark backing at the edges without flattening the middle of
+   the image. */
+.hero-panel::before,
+.hero-panel::after{
+  content:""; position:absolute; left:0; right:0; z-index:1; pointer-events:none;
+}
+.hero-panel::before{
+  top:0; height:38%;
+  background:linear-gradient(to bottom, rgba(0,0,0,.78) 0%, rgba(0,0,0,.42) 45%, rgba(0,0,0,0) 100%);
+}
+.hero-panel::after{
+  bottom:0; height:48%;
+  background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.5) 42%, rgba(0,0,0,0) 100%);
+}
 .hero-panel .panel-index{
   position:absolute; top:1.4rem; left:1.4rem; color:var(--white);
   font-family:var(--font-display); font-weight:900; font-size:.85rem;
@@ -376,7 +392,7 @@ h1,h2,h3,h4{
 }
 .hero-panel .panel-caption{
   position:absolute; bottom:1.4rem; left:1.4rem; right:1.4rem; color:var(--white);
-  font-size:var(--fs-label); letter-spacing:.04em; z-index:2; opacity:.8;
+  font-size:var(--fs-label); letter-spacing:.04em; z-index:2;
 }
 
 .scroll-cue{
