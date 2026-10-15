@@ -113,7 +113,7 @@
       var note = document.getElementById("formStatus");
       if (note) {
         note.textContent =
-          "This form isn't connected to an inbox yet — please email enquiries@lmhighways.co.uk directly, or call us, until it's wired up.";
+          "This form isn't connected to an inbox yet — please email info@lmhighways.co.uk directly, or call us, until it's wired up.";
       }
     });
   }
