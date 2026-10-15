@@ -1,5 +1,5 @@
-# L&M Highways — https://laurenceabbott.github.io/landm/
-# If the site moves to its own domain, update the Sitemap line below.
+# L&M Highways — https://lmhighways.co.uk/
+# Live on its own domain. Update the Sitemap line below if that ever changes.
 
 User-agent: *
 Allow: /
@@ -45,4 +45,4 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-Sitemap: https://laurenceabbott.github.io/landm/sitemap.xml
+Sitemap: https://lmhighways.co.uk/sitemap.xml

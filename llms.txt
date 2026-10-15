@@ -29,7 +29,7 @@ surfacing works.
 
 ## Services
 
-- [Services overview](https://laurenceabbott.github.io/landm/services.html): the full
+- [Services overview](https://lmhighways.co.uk/services.html): the full
   range, from commercial surfacing and domestic driveways to highway works,
   groundworks and specialist treatments.
 - Commercial surfacing — car parks, access roads, industrial estates, commercial yards.
@@ -38,34 +38,34 @@ surfacing works.
   local authority schemes.
 - Specialist services — machine lay, hand lay, thermo patching, pre-coat chipping,
   coloured asphalt, road marking, 24/7 emergency response, planning and management.
-- [Plant & labour hire](https://laurenceabbott.github.io/landm/services.html#hire):
+- [Plant & labour hire](https://lmhighways.co.uk/services.html#hire):
   rollers, compactors, laying equipment, dumpers, material handlers and skips, plus
   accredited surfacing crews, foremen and site managers, on short or long-term hire.
 
 ## Sectors
 
-[Sectors served](https://laurenceabbott.github.io/landm/sectors.html): highways,
+[Sectors served](https://lmhighways.co.uk/sectors.html): highways,
 industrial and commercial, construction, retail, education, sports and leisure, sea
 ports, utilities, emergency services and healthcare, recycling and quarries,
 residential, historical and conservation, and private clients.
 
 ## Case studies
 
-- [Cringleford, Norwich, NR4](https://laurenceabbott.github.io/landm/case-study-cringleford.html)
+- [Cringleford, Norwich, NR4](https://lmhighways.co.uk/case-study-cringleford.html)
   — resurfacing an adopted residential estate. 1,788 m² cold milled; 4,357 m² of
   SMA10 Surf 40/60 H/S machine laid at 40mm to the access roads; 1,585 m² of AC6
   Dense Surf 100/150 hand laid to footways; 120 m² of footway reconstructed in AC20
   binder at 50mm with AC6 surface course at 20mm; 218 m² of adopted driveways hand
   laid. 6,280 m² surfaced in total, delivered on time, in budget and to specification.
-- [A14, Ipswich, IP1](https://laurenceabbott.github.io/landm/case-study-a14-ipswich.html)
+- [A14, Ipswich, IP1](https://lmhighways.co.uk/case-study-a14-ipswich.html)
   — labour supply. A chipping gang supplied to install pre-coated chips into hot
   rolled asphalt surface course, working overnight on a live trunk road under full
   traffic management, directly behind the machine gang laying the mat.
 
 ## Optional
 
-- [About](https://laurenceabbott.github.io/landm/about.html)
-- [FAQs](https://laurenceabbott.github.io/landm/faqs.html) — quotes, timescales,
+- [About](https://lmhighways.co.uk/about.html)
+- [FAQs](https://lmhighways.co.uk/faqs.html) — quotes, timescales,
   coverage, guarantees, planning permission and accreditations.
-- [Contact](https://laurenceabbott.github.io/landm/contact.html) — free, no-obligation
+- [Contact](https://lmhighways.co.uk/contact.html) — free, no-obligation
   site visit and written quotation.
