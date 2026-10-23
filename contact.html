@@ -8,7 +8,7 @@
 <meta name="description" content="Get a free, no-obligation quote from L&amp;M Highways. Based in Mildenhall, Suffolk, covering Bury St Edmunds and East Anglia.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css?v=28">
+<link rel="stylesheet" href="css/style.css?v=29">
 <link rel="canonical" href="https://lmhighways.co.uk/contact.html">
 <!-- HOLDING MODE: kept out of search until the client is ready. To go live,
      replace the content below with:
@@ -169,10 +169,10 @@
              registered against the access key. The destination address is deliberately NOT
              in this file — putting it here would publish it to every scraper that reads the
              page. ONE key covers both forms on the site; the subject line below is what
-             tells them apart in the inbox. Paste the key in place of REPLACE_WITH_ACCESS_KEY
-             — until then the form stays disabled and tells people to call instead. -->
+             tells them apart in the inbox. The key below is a public client-side
+             identifier, not a secret — it only permits posting to this one form. -->
         <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <input type="hidden" name="access_key" value="REPLACE_WITH_ACCESS_KEY">
+          <input type="hidden" name="access_key" value="600c6a2a-428d-4b1a-ba4c-57b81bb87954">
           <input type="hidden" name="subject" value="Website enquiry — quote request">
           <input type="hidden" name="from_name" value="L&amp;M Highways website">
           <input type="hidden" name="form" value="Quote request (contact page)">
