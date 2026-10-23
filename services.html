@@ -8,7 +8,7 @@
 <meta name="description" content="Commercial and domestic asphalt surfacing, highway works, machine and hand lay, thermo patching, pre-coat chipping, road marking and plant hire.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css?v=25">
+<link rel="stylesheet" href="css/style.css?v=26">
 <link rel="canonical" href="https://lmhighways.co.uk/services.html">
 <!-- HOLDING MODE: kept out of search until the client is ready. To go live,
      replace the content below with:
@@ -591,7 +591,12 @@
     <div class="container contact-grid">
       <div>
         <h3 style="margin-bottom:1.5rem; font-size:1.4rem;">Request a hire quote</h3>
-        <form id="hireForm" novalidate>
+        <!-- NOTE FOR L&M: see the comment on the contact form. Same Formspree account,
+             separate form ID, so hire requests can be told apart from quote requests. -->
+        <form id="hireForm" action="https://formspree.io/f/REPLACE_WITH_HIRE_FORM_ID" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Website enquiry — plant &amp; labour hire">
+          <input type="hidden" name="form" value="Hire request (services page)">
+          <div class="hp" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
           <div class="field-row">
             <div class="field">
               <input placeholder=" " type="text" id="hireName" name="name" required autocomplete="name">
@@ -632,7 +637,7 @@
             <span class="field-hint">Scope, location and any specific requirements</span>
           </div>
           <button type="submit" class="btn">Send hire request <span class="arrow">→</span></button>
-          <p class="form-note" id="hireStatus">We'll get back to you within one working day with available options and pricing.</p>
+          <p class="form-note" id="hireStatus" role="status" aria-live="polite">We'll get back to you within one working day with available options and pricing.</p>
         </form>
       </div>
 

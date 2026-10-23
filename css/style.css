@@ -870,6 +870,14 @@ h1,h2,h3,h4{
 /* A heading that exists for the document outline and screen readers where
    the layout alone separates two regions. Not hidden content — it names
    exactly what is visible beside it. */
+/* Spam trap. Off-screen rather than display:none — a bot that skips hidden
+   inputs would otherwise walk straight past it. aria-hidden on the wrapper
+   keeps it away from screen readers. */
+.hp{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px;
+  overflow:hidden;
+}
+
 .visually-hidden{
   position:absolute; width:1px; height:1px; margin:-1px; padding:0;
   overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0;

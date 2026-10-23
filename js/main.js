@@ -105,16 +105,71 @@
     });
   }
 
-  // Contact form — static placeholder (no backend wired up yet)
-  var form = document.getElementById("quoteForm");
-  if (form) {
+  // Forms — posted to Formspree over fetch, so the visitor stays on the page
+  // and gets an answer in place rather than being bounced to a third-party
+  // thank-you screen. Covers the quote form and the plant hire form.
+  //
+  // While a form's action still holds the REPLACE_WITH_ placeholder there is
+  // nowhere to post to, so it says so instead of silently failing — a form
+  // that looks like it sent but didn't is worse than one that admits it.
+  [
+    { form: "quoteForm", status: "formStatus" },
+    { form: "hireForm",  status: "hireStatus" }
+  ].forEach(function (cfg) {
+    var form = document.getElementById(cfg.form);
+    if (!form) { return; }
+
+    var note = document.getElementById(cfg.status);
+    var button = form.querySelector('button[type="submit"]');
+    var resting = note ? note.textContent : "";
+    var wired = form.getAttribute("action").indexOf("REPLACE_WITH") === -1;
+
+    var say = function (msg) { if (note) { note.textContent = msg; } };
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var note = document.getElementById("formStatus");
-      if (note) {
-        note.textContent =
-          "This form isn't connected to an inbox yet — please email info@lmhighways.co.uk directly, or call us, until it's wired up.";
+
+      if (!wired) {
+        say("This form isn't connected to an inbox yet — please call us on 01638 493555 "
+          + "and we'll pick it up straight away.");
+        return;
       }
+
+      // the markup carries novalidate to suppress validation on every keystroke,
+      // so the check runs here instead, on submit
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var original = button ? button.innerHTML : "";
+      if (button) { button.disabled = true; button.textContent = "Sending…"; }
+      say("Sending…");
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      })
+        .then(function (res) {
+          if (res.ok) {
+            form.reset();
+            say("Thanks — that's with us. We'll get back to you within one working day.");
+            if (button) { button.innerHTML = original; }
+            // nothing left to submit, so keep the button out of action
+            if (button) { button.disabled = true; }
+            return;
+          }
+          return res.json().then(function (data) {
+            var detail = data && data.errors && data.errors.length
+              ? data.errors.map(function (x) { return x.message; }).join(", ")
+              : "";
+            throw new Error(detail || ("Server returned " + res.status));
+          });
+        })
+        .catch(function (err) {
+          say("Sorry — that didn't send (" + err.message + "). Please call us on 01638 493555, "
+            + "or try again in a moment.");
+          if (button) { button.disabled = false; button.innerHTML = original; }
+          setTimeout(function () { say(resting); }, 12000);
+        });
     });
-  }
+  });
 })();
