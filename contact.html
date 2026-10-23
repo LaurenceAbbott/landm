@@ -8,7 +8,7 @@
 <meta name="description" content="Get a free, no-obligation quote from L&amp;M Highways. Based in Mildenhall, Suffolk, covering Bury St Edmunds and East Anglia.">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css?v=25">
+<link rel="stylesheet" href="css/style.css?v=26">
 <link rel="canonical" href="https://lmhighways.co.uk/contact.html">
 <!-- HOLDING MODE: kept out of search until the client is ready. To go live,
      replace the content below with:
@@ -165,10 +165,16 @@
 
       <div>
         <h2 class="visually-hidden">Send us an enquiry</h2>
-        <!-- NOTE FOR L&M: this form isn't wired to an inbox yet. Connect it to a form service
-             (e.g. Formspree/Netlify Forms) or your own backend before going live, and update
-             the phone/email placeholders throughout the site with your real details. -->
-        <form id="quoteForm" novalidate>
+        <!-- NOTE FOR L&M: submissions go to a Formspree form, which forwards them to the
+             address set in the Formspree dashboard. The destination address is deliberately
+             NOT in this file — putting it here would publish it to every scraper that reads
+             the page. Paste the form ID into the action below; until then the form stays
+             disabled and tells people to call instead. -->
+        <form id="quoteForm" action="https://formspree.io/f/REPLACE_WITH_FORM_ID" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="Website enquiry — quote request">
+          <input type="hidden" name="form" value="Quote request (contact page)">
+          <!-- spam trap: hidden from people, filled in by bots -->
+          <div class="hp" aria-hidden="true"><input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></div>
           <div class="field-row">
             <div class="field">
               <input placeholder=" " type="text" id="name" name="name" required autocomplete="name">
@@ -205,7 +211,7 @@
             <label for="message">Tell us about the project</label>
           </div>
           <button type="submit" class="btn">Send enquiry <span class="arrow">→</span></button>
-          <p class="form-note" id="formStatus">We'll get back to you within one working day.</p>
+          <p class="form-note" id="formStatus" role="status" aria-live="polite">We'll get back to you within one working day.</p>
         </form>
       </div>
 
