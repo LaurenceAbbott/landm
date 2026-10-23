@@ -105,7 +105,7 @@
     });
   }
 
-  // Forms — posted to Formspree over fetch, so the visitor stays on the page
+  // Forms — posted to Web3Forms over fetch, so the visitor stays on the page
   // and gets an answer in place rather than being bounced to a third-party
   // thank-you screen. Covers the quote form and the plant hire form.
   //
@@ -122,7 +122,8 @@
     var note = document.getElementById(cfg.status);
     var button = form.querySelector('button[type="submit"]');
     var resting = note ? note.textContent : "";
-    var wired = form.getAttribute("action").indexOf("REPLACE_WITH") === -1;
+    var key = form.querySelector('input[name="access_key"]');
+    var wired = !!key && key.value.indexOf("REPLACE_WITH") === -1;
 
     var say = function (msg) { if (note) { note.textContent = msg; } };
 
@@ -149,19 +150,15 @@
         headers: { Accept: "application/json" }
       })
         .then(function (res) {
-          if (res.ok) {
+          return res.json().catch(function () { return {}; }).then(function (data) {
+            // a 200 with success:false still means it did not send
+            if (!res.ok || data.success === false) {
+              throw new Error(data.message || ("Server returned " + res.status));
+            }
             form.reset();
             say("Thanks — that's with us. We'll get back to you within one working day.");
-            if (button) { button.innerHTML = original; }
             // nothing left to submit, so keep the button out of action
-            if (button) { button.disabled = true; }
-            return;
-          }
-          return res.json().then(function (data) {
-            var detail = data && data.errors && data.errors.length
-              ? data.errors.map(function (x) { return x.message; }).join(", ")
-              : "";
-            throw new Error(detail || ("Server returned " + res.status));
+            if (button) { button.innerHTML = original; button.disabled = true; }
           });
         })
         .catch(function (err) {
