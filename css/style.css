@@ -623,7 +623,12 @@ h1,h2,h3,h4{
 .footer-lbl{ color:var(--fg-muted); }
 .footer-col a:hover{ text-decoration:underline; }
 .footer-bottom{ padding-block:1.6rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; font-size:.8rem; color:var(--fg-muted); }
-.footer-bottom .legal-links{ display:flex; gap:1.5rem; }
+.footer-bottom .legal-links{ display:flex; gap:1.5rem; flex:none; }
+/* company disclosure: two stacked lines, allowed to take the width the
+   legal links don't need, and to wrap rather than squeeze them out */
+.footer-legal{ display:flex; flex-direction:column; gap:.45rem; max-width:78ch; min-width:0; }
+.footer-legal a{ text-decoration:underline; text-underline-offset:2px; }
+.footer-legal a:hover{ color:var(--white); }
 .footer-bottom a:hover{ color:var(--white); }
 
 @media (max-width:860px){
