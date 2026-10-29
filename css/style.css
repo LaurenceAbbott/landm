@@ -629,8 +629,7 @@ h1,h2,h3,h4{
 }
 .footer-social svg{ width:18px; height:18px; fill:currentColor; flex:none; }
 .footer-social:hover, .footer-social:focus-visible{ background:#0C63D4; transform:translateY(-2px); }
-/* Accreditation mark. The supplied logo is a 196px raster, so it is shown at
-   120 and never scaled up past its native width, where it goes soft. */
+/* Accreditation mark. Vector, so the width is purely a design choice. */
 .footer-accred{ margin-top:1.9rem; }
 .footer-accred-lbl{
   display:block; margin-bottom:.75rem;
