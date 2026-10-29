@@ -614,7 +614,11 @@ h1,h2,h3,h4{
 .footer-top{ padding-block:clamp(3rem,6vw,5.5rem); }
 .footer-shape{ display:block; width:100%; height:auto; }
 .footer-grid{ display:grid; grid-template-columns:1.4fr .8fr .8fr 1fr; gap:2.5rem; }
-.footer-brand img{ height:34px; width:auto; }
+/* Direct child only: the Avetta mark also lives inside .footer-brand, and a
+   bare descendant selector matched it too — it was only sized correctly
+   because its own rule happens to come later in this file. Width-driven so
+   it sits a measured 20px wider than the 120px accreditation mark. */
+.footer-brand > img{ width:140px; height:auto; }
 .footer-brand p{ margin-top:1.2rem; color:var(--fg-muted); max-width:32ch; font-size:var(--fs-body-sm); }
 /* Social button in the brand column. Same treatment as the share buttons on
    the case studies, so Facebook reads the same way wherever it appears.
