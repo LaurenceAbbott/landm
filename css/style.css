@@ -52,7 +52,7 @@
 }
 
 *, *::before, *::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; font-size:16px; }
 body{
   margin:0;
   background:var(--bg);
@@ -152,7 +152,7 @@ h1,h2,h3,h4{
   --btn-bg:var(--white);
   display:inline-flex;
   align-items:center;
-  gap:.65rem;
+  gap:.55rem;
   padding:1.05rem 1.7rem;
   background:var(--btn-bg);
   color:var(--btn-fg);
@@ -165,8 +165,20 @@ h1,h2,h3,h4{
   transition:background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
 }
 .btn:hover{ background:transparent; color:var(--white); }
-.btn .arrow{ display:inline-block; transition:transform .25s var(--ease); }
-.btn:hover .arrow{ transform:translateX(4px); }
+/* The arrow glyph sits on the maths axis, which is lower than the optical
+   centre of uppercase caps, and it carries the label's letter-spacing as a
+   trailing gap — together they left-shifted the pair inside the button and
+   dropped the arrow below the text. Nudge it back onto the caps' centre and
+   cancel the trailing track and the glyph's right side bearing. Measured:
+   both margins now agree to within half a pixel. */
+.btn .arrow{
+  display:inline-block;
+  letter-spacing:0;
+  margin-right:-0.14em;
+  transform:translateY(-0.09em);
+  transition:transform .25s var(--ease);
+}
+.btn:hover .arrow{ transform:translate(4px,-0.09em); }
 
 .btn--outline{
   --btn-bg:transparent;
@@ -958,6 +970,29 @@ h1,h2,h3,h4{
 .visually-hidden{
   position:absolute; width:1px; height:1px; margin:-1px; padding:0;
   overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0;
+}
+
+/* ---------- Phone type scale ----------
+   On a phone the whole scale reads a size too large: the headline, the
+   lede under it and the body copy all crowd the viewport. Rather than
+   re-declare sizes role by role, the root steps down ~10% and every
+   rem-based size follows. The three smallest roles are given back most
+   of that reduction so micro-type doesn't drop below ~12px, and the
+   gutter and field height are restated to land where they already were
+   — layout spacing and touch targets were never the problem. */
+@media (max-width:600px){
+  html{ font-size:14.5px; }
+  :root{
+    --fs-body-sm:1.02rem;   /* 14.8px, was 15.2 */
+    --fs-label:.8rem;       /* 11.6px, was 12   */
+    --fs-control:.85rem;    /* 12.3px, was 12.8 */
+    --field-h:3.9rem;       /* 56.6px, as before */
+    --gutter:clamp(1.4rem, 4vw, 3.5rem);
+  }
+  body{ font-size:15px; }
+  /* iOS Safari zooms the page when a focused field is under 16px, so the
+     fields and their floating labels keep their own size. */
+  .field input, .field select, .field textarea, .field label{ font-size:16px; }
 }
 
 /* ---------- WhatsApp floating action button ---------- */
